@@ -13,9 +13,9 @@ router.get("/:id", async(req, res)=>{
     res.send(individualThread);
 });
 
-router.delete("/:id", async()=>{
+router.delete("/:id", async(req, res)=>{
     let {id} = req.params;
-    let thread = await thread.findByIdAndDelete(id);
-    res.send(thread);
+    let response = await thread.findByIdAndDelete(id);
+    console.log(response);
 })
 export default router;

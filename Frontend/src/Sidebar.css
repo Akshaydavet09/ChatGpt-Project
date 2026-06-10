@@ -1,0 +1,22 @@
+.Sidebar {
+    width: 15vw;
+    background-color: aliceblue;
+    height: 100vh;
+}
+
+.btn-sec {
+    background-color: #212121;
+    width: 100%;
+}
+
+.logo {
+    height: 25px;
+    color: #ececec;
+
+}
+
+.icon {
+    height: 25px;
+    color: #ececec;
+
+}
