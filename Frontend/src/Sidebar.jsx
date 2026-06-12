@@ -1,21 +1,26 @@
 import "./Sidebar.css"
-function Sidebar(){
+function Sidebar() {
     return <div className="Sidebar">
         {/* butoon section  */}
         <button className="btn-sec">
-            <img className="logo" src="./src/assets/blacklogo.png" alt=""/>
-            <i className="icon" className="fa-solid fa-pen-to-square"></i>
+            <img className="logo" src="./src/assets/blacklogo.png" alt="" />
+            <i className="fa-solid fa-pen-to-square icon"></i>
         </button>
 
         {/* history sec  */}
-        <ul>
-            <li>History 1</li>
-            <li>History 2</li>
-            <li>History 3</li>
-        </ul>
+        <div className="thread-sec">
+            <div className="threads">thread 1</div>
+            <div className="threads">thread 2</div>
+            <div className="threads">thread 3</div>
+
+        </div>
+
+        <div className="heading">
+            By Akshay 🤍
+        </div>
 
     </div>
-    
+
 }
 
 export default Sidebar;

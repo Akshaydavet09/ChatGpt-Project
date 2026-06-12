@@ -9,4 +9,5 @@ body{
 .App{
     background-color: #212121;    
     height:100vh;
+    display:flex;
 }
