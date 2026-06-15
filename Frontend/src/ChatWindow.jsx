@@ -1,23 +1,37 @@
 import "./ChatWindow.css"
-function ChatWindow(){
+import { useContext } from "react";
+const {prompt, setPrompt, reply, setReply} = useContext(MyContext);
+import { MyContext } from "./MyContext";
+function ChatWindow() {
+    function changeFunc(event){
+        event.preventDefault();
+        setPrompt(event.target.value);
+    }
+
+
+
     return <div className="chat-window">
         <div className="navbar">
-        <span className="chat-window-heading">A-GPT<i class="fa-solid fa-angle-down"></i></span>
-        <div className="profile"><i class="fa-solid fa-user"></i>
+            <span className="chat-window-heading">A-GPT<i class="fa-solid fa-angle-down"></i></span>
+            <div className="profile"><i class="fa-solid fa-user"></i>
+            </div>
         </div>
-        </div>
-         <div className="chat-input">
+        <div className="chat-input">
+                <form action="http://localhost:8080/chat" method="post">
             <div className="input">
-                <input type="text" placeholder="Ask Anything"/>
-                <div className="send-btn">
-                <i class="fa-solid fa-paper-plane"></i>
-                </div>
+                    <input type="text" placeholder="Ask Anything" name="message" onChange={changeFunc}/>
+                    <div className="send-btn">
+                        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                        
+                    </div>
+
 
             </div>
-            <p>A-GPT can make mistakes. Check important info.</p>
+                </form>
+            <p>A-GPT can make mistakes. Check important info. See Cookie Prefrences.</p>
         </div>
 
-    </div>
+    </div >
 }
 
 export default ChatWindow;

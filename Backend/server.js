@@ -72,7 +72,7 @@ app.get("/chat", async (req, res) => {
 });
 
 app.post("/chat", async (req, res) => {
-    let { threadId: ThreadId, message } = req.body;
+    let { threadId: ThreadId="126", message } = req.body;
     if (!ThreadId || !message) {
         throw new ExpressError(400, "Missing Required Fields.")
     }
@@ -88,6 +88,7 @@ app.post("/chat", async (req, res) => {
         Thread.messages.push(Message);
         let me = await Thread.save();
         console.log(me);
+        res.send(me);
     } catch (error) {
         // throw new ExpressError(429, "Error From Gemini");
         console.log(error)
