@@ -10,6 +10,10 @@ import threadRoutes from "./routes/thread.js"
 const url = 'mongodb://127.0.0.1:27017/Project';
 import ExpressError from "./utils/ExpressError.js";
 import { title } from "process";
+import cors from "cors";
+app.use(cors({
+    origin: "http://localhost:5173"
+}))
 
 
 app.use(express.urlencoded({ extended: true }));
