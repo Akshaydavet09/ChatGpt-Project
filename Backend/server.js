@@ -92,13 +92,11 @@ app.post("/chat", async (req, res) => {
         Thread.messages.push(Message);
         let me = await Thread.save();
         console.log(me);
-        res.send(me);
+        res.json(Message);
     } catch (error) {
         // throw new ExpressError(429, "Error From Gemini");
-        console.log(error)
+        console.log(error);
     }
-
-
 });
 
 app.use((err, req, res, next) => {
