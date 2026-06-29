@@ -1,0 +1,39 @@
+.chats {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+.chat {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+}
+
+.msg-area{
+    width: 100%;
+}
+.user-msg p {
+    margin: 0;
+}
+
+.user-msg {
+    align-self: flex-end;
+    padding: 0.75rem 1rem;
+    background-color: #323232;
+    border-radius: 1.25rem;
+    font-size: 0.9rem;
+}
+.default-heading{
+    align-self: center;
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+}
+
+.ai-msg{
+    font-size: 0.9rem;
+    text-align: left;
+}

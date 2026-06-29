@@ -44,28 +44,26 @@ app.use("/thread", threadRoutes);
 
 
 
-app.get("/chat", async (req, res) => {
-    //  let{threadId, message} = req.body;
-    // console.log("inif");
-    // let threadId = true;
-    // let message = false;
-    // if (!threadId || !message) {
-    //     console.log("inif");
-    //     throw new ExpressError(400, "Missing Required Fields.");
-    // }
+// app.get("/chat", async (req, res) => {
+//     //  let{threadId, message} = req.body;
+//     // console.log("inif");
+//     // let threadId = true;
+//     // let message = false;
+//     // if (!threadId || !message) {
+//     //     console.log("inif");
+//     //     throw new ExpressError(400, "Missing Required Fields.");
+//     // }
 
-    let ThreadId = "124";
-    let Thread = await thread.findOne({ threadId: ThreadId });
-    let message = "How to get a job in IT";
-    try {
-        let response = await aiResponse(message);
-        let Message = { content: response, role: "assistant" };
-        let done = await thread.findByIdAndUpdate(Thread._id, { $push: { messages: Message } });
-    } catch (error) {
-        throw new ExpressError(429, "Error From Gemini");
-    }
-
-
+//     let ThreadId = "124";
+//     let Thread = await thread.findOne({ threadId: ThreadId });
+//     let message = "How to get a job in IT";
+//     try {
+//         let response = await aiResponse(message);
+//         let Message = { content: response, role: "assistant" };
+//         let done = await thread.findByIdAndUpdate(Thread._id, { $push: { messages: Message } });
+//     } catch (error) {
+//         throw new ExpressError(429, "Error From Gemini");
+//     }
 
 
 
@@ -73,7 +71,9 @@ app.get("/chat", async (req, res) => {
 
 
 
-});
+
+
+// });
 
 app.post("/chat", async (req, res) => {
     let { threadId: ThreadId="126", message } = req.body;

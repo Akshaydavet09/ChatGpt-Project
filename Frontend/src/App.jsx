@@ -8,7 +8,9 @@ import { useState } from 'react'
 function App() {
   const [prompt, setPrompt] = useState("");
   const [reply, setReply] = useState("");
-  const providerValues = { prompt, setPrompt, reply, setReply };
+  const [newChat, setNewChat] = useState(true);
+  const [prevChats, setPrevChats] = useState([]);
+  const providerValues = { prompt, setPrompt, reply, setReply, prevChats, setPrevChats};
   return <div className="App">
     <MyContext.Provider value={providerValues}>
       <Sidebar />

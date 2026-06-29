@@ -4,12 +4,13 @@ import { MyContext } from "./MyContext";
 import { useEffect } from "react";
 import { ScaleLoader } from "react-spinners";
 import { useState } from "react";
+import Chat from "./Chat"
 
 function ChatWindow() {
     let [loading, setLoading] = useState(true);
     let [color, setColor] = useState("#ececec");
-    let [styles, setStyles] = useState({position: "absolute", right: "70px", display: "none"});
-    const { prompt, setPrompt, reply, setReply } = useContext(MyContext);
+    let [styles, setStyles] = useState({ position: "absolute", right: "70px", display: "none" });
+    const { prompt, setPrompt, reply, setReply, prevChats, setPrevChats } = useContext(MyContext);
     function changeFunc(event) {
         event.preventDefault();
         setPrompt(event.target.value);
@@ -18,8 +19,8 @@ function ChatWindow() {
     //      console.log(prompt);
     // }, [prompt])
     async function getReply(question) {
-        setStyles((prevVal)=>{
-            return {...prevVal, display: "initial"}
+        setStyles((prevVal) => {
+            return { ...prevVal, display: "initial" }
         });
         let options = {
             method: "POST",
@@ -34,16 +35,30 @@ function ChatWindow() {
         let response = await fetch("http://localhost:8080/chat", options);
         let replyAi = await response.json();
         console.log(replyAi.content);
-        setStyles((prevVal)=>{
-            return {...prevVal, display: "none"}
+        setStyles((prevVal) => {
+            return { ...prevVal, display: "none" }
         });
         if (replyAi.content) {
             setReply(replyAi.content);
         }
     }
     useEffect(() => {
-        console.log(reply);
-    }, [reply])
+        setPrevChats((prevVal) => {
+            return [...prevVal, {
+                role: "user",
+                content: prompt
+            }, {
+                role: "assistant",
+                content: reply
+            }]
+        });
+        setPrompt("");
+        setReply("");
+    }, [reply]);
+
+    useEffect(() =>{
+        console.log(prevChats);
+    }, [prevChats]);
 
     return <div className="chat-window">
         <div className="navbar">
@@ -51,6 +66,7 @@ function ChatWindow() {
             <div className="profile"><i className="fa-solid fa-user"></i>
             </div>
         </div>
+        <Chat />
         <div className="chat-input">
             <div className="input">
                 <input type="text" placeholder="Ask Anything" name="message" onChange={changeFunc} />
