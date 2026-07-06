@@ -4,7 +4,7 @@ const router = Router();
 
 router.get("/", async(req, res)=>{
   let data = await thread.find().sort({updatedAt: -1});
-  res.send(data);
+  res.json(data);
 });
 
 router.get("/:id", async(req, res)=>{

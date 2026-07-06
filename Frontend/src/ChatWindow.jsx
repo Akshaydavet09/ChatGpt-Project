@@ -10,7 +10,7 @@ function ChatWindow() {
     let [loading, setLoading] = useState(true);
     let [color, setColor] = useState("#ececec");
     let [styles, setStyles] = useState({ position: "absolute", right: "70px", display: "none" });
-    const { prompt, setPrompt, reply, setReply, prevChats, setPrevChats } = useContext(MyContext);
+    const { prompt, setPrompt, reply, setReply, prevChats, setPrevChats, newChat, setNewChat } = useContext(MyContext);
     function changeFunc(event) {
         event.preventDefault();
         setPrompt(event.target.value);
@@ -34,32 +34,26 @@ function ChatWindow() {
         }
         let response = await fetch("http://localhost:8080/chat", options);
         let replyAi = await response.json();
-        console.log(replyAi.content);
         setStyles((prevVal) => {
             return { ...prevVal, display: "none" }
         });
         if (replyAi.content) {
             setReply(replyAi.content);
+            setPrevChats((prevVal) => {
+                return [...prevVal, {
+                    role: "user",
+                    content: prompt
+                }, {
+                    role: "assistant",
+                    content: replyAi.content
+                }]
+            });
+            setPrompt("");
+            setReply("");
+            setNewChat(false);
+            setPrompt("");
         }
     }
-    useEffect(() => {
-        setPrevChats((prevVal) => {
-            return [...prevVal, {
-                role: "user",
-                content: prompt
-            }, {
-                role: "assistant",
-                content: reply
-            }]
-        });
-        setPrompt("");
-        setReply("");
-    }, [reply]);
-
-    useEffect(() =>{
-        console.log(prevChats);
-    }, [prevChats]);
-
     return <div className="chat-window">
         <div className="navbar">
             <span className="chat-window-heading">A-GPT<i className="fa-solid fa-angle-down"></i></span>
@@ -69,7 +63,7 @@ function ChatWindow() {
         <Chat />
         <div className="chat-input">
             <div className="input">
-                <input type="text" placeholder="Ask Anything" name="message" onChange={changeFunc} />
+                <input type="text" placeholder="Ask Anything" name="message" onChange={changeFunc}/>
                 <div className="send-btn">
                     <button onClick={getReply}><i className="fa-solid fa-paper-plane"></i></button>
                 </div>

@@ -10,7 +10,8 @@ function App() {
   const [reply, setReply] = useState("");
   const [newChat, setNewChat] = useState(true);
   const [prevChats, setPrevChats] = useState([]);
-  const providerValues = { prompt, setPrompt, reply, setReply, prevChats, setPrevChats};
+  const [data, setData] = useState([]);
+  const providerValues = { prompt, setPrompt, reply, setReply, prevChats, setPrevChats, newChat, setNewChat, data, setData};
   return <div className="App">
     <MyContext.Provider value={providerValues}>
       <Sidebar />

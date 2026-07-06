@@ -1,13 +1,15 @@
-const {GoogleGenAI} = require('@google/genai');
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const ai = new GoogleGenAI({apiKey: GEMINI_API_KEY});
+import Groq from "groq-sdk";
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-
-async function aiResponse(question) {
-  const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
-    contents: question,
+const aiResponse = async function (msg) {
+  const completion = await groq.chat.completions.create({
+    model: "llama-3.3-70b-versatile",
+    messages: [{ role: "user", content: msg }],
   });
-  return response.text;
+  return completion.choices[0].message.content;
+  // return aiResponse.choices[0].message.content;
 }
-module.exports = aiResponse;
+
+export default aiResponse;
+
+
