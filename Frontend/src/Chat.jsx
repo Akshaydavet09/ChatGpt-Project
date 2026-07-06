@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { MyContext } from "./MyContext";
+import MarkDown from "react-markdown";
 import "./chat.css";
 function Chat() {
     const { newChat, setNewChat, prevChats, setPrevChats } = useContext(MyContext);
@@ -22,7 +23,7 @@ function Chat() {
                         else {
                             return <>
                                 <div className="ai-msg">
-                                    <p>{item.content}</p>
+                                    <MarkDown>{item.content}</MarkDown>
                                 </div>
                             </>
                         }
