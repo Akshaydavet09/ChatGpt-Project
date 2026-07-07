@@ -2,14 +2,19 @@
     display: flex;
     justify-content: center;
     flex-grow: 1;
-    overflow-y: scroll;
+    width:100%;
+    max-width: 700px;
+    align-self: center;
+    /* background-color: antiquewhite; */
+    position: relative;
 }
 
 .chat {
     width: 100%;
-    max-width: 700px;
     display: flex;
     flex-direction: column;
+    height:100%;
+    flex-grow: 1;
 }
 
 .msg-area{

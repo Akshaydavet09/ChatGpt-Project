@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { MyContext } from "./MyContext";
 import MarkDown from "react-markdown";
+import ChatInput from "./ChatInput";
 import "./chat.css";
 function Chat() {
     const { newChat, setNewChat, prevChats, setPrevChats } = useContext(MyContext);
@@ -12,7 +13,7 @@ function Chat() {
 
                 <div className="chat">
 
-                    { prevChats && prevChats.map((item) => {
+                    {prevChats && prevChats.map((item) => {
                         if (item.role === "user") {
                             return <>
                                 <div className="user-msg">
@@ -29,6 +30,7 @@ function Chat() {
                         }
                     })
                     }
+                    <ChatInput></ChatInput>
                 </div>
 
             }
