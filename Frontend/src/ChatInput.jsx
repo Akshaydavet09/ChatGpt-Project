@@ -51,7 +51,7 @@ function ChatInput() {
     return <>
         <div className="chat-input">
             <div className="input">
-                <input type="text" placeholder="Ask Anything" name="message" onChange={changeFunc} />
+                <input type="text" placeholder="Ask Anything" name="message" onChange={changeFunc} value={prompt} />
                 <div className="send-btn">
                     <button onClick={getReply}><i className="fa-solid fa-paper-plane"></i></button>
                 </div>
@@ -64,6 +64,7 @@ function ChatInput() {
                     style={styles}
                 />
             </div>
+            <div className="para"><p>A-GPT can make mistakes. Check important info.</p></div>
         </div></>
 }
 export default ChatInput;

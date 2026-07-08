@@ -30,10 +30,9 @@ function Chat() {
                         }
                     })
                     }
-                    <ChatInput></ChatInput>
                 </div>
-
             }
+                    <ChatInput></ChatInput>
         </div >
 
 

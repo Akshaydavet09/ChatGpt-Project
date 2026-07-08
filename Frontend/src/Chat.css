@@ -1,11 +1,10 @@
 .chats {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     flex-grow: 1;
     width:100%;
     max-width: 700px;
     align-self: center;
-    /* background-color: antiquewhite; */
     position: relative;
 }
 
@@ -13,7 +12,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    height:100%;
     flex-grow: 1;
 }
 
@@ -32,15 +30,14 @@
     font-size: 0.9rem;
     margin: 0.5rem 0;
 }
-.default-heading{
-    align-self: center;
-    text-align: center;
-    width: 100%;
-    max-width: 700px;
-}
-
 .ai-msg{
     margin: 0.5rem 0;
     font-size: 0.9rem;
     text-align: left;
+}
+.para p{
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 300;
 }
