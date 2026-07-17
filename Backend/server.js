@@ -87,9 +87,10 @@ app.post("/chat", async (req, res) => {
     }
     try {
         let response = await aiResponse(message);
-        let Message = { content: response, role: "assistant" };
-        console.log(Message);
-        Thread.messages.push(Message);
+        let userMessage = { content: message, response: "user" };
+        let assistantMessage = { content: response, role: "assistant" };
+        Thread.messages.push(userMessage);
+        Thread.messages.push(assistantMessage);
         let me = await Thread.save();
         console.log(me);
         res.json(Message);

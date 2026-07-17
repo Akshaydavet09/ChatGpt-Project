@@ -23,7 +23,12 @@ function Sidebar() {
             
         );
     }
-
+   async function historyClicked(idThread){ 
+    console.log(idThread);
+        let response = await fetch(`http://localhost:8080/thread/${idThread}`);
+        let data = await response.json();
+        console.log(data);
+    }
     return <div className="Sidebar">
         {/* butoon section  */}
         <button className="btn-sec">
@@ -38,7 +43,7 @@ function Sidebar() {
         {/* history sec   */}
         <div className="thread-sec">
             {data && data.map((obj) => {
-                return  <div className="threads" style={{display: isOpen ? "initial": "none"}}>{obj.title}</div>
+                return  <div className="threads" style={{display: isOpen ? "initial": "none"}} onClick={()=>{historyClicked(obj.threadId)}}>{obj.title}</div>
             })}
         </div>
 

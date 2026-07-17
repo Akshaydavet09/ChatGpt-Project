@@ -12,7 +12,7 @@ function ChatInput() {
         event.preventDefault();
         setPrompt(event.target.value);
     }
-    async function getReply(question) {
+    async function getReply() {
         setStyles((prevVal) => {
             return { ...prevVal, display: "initial" }
         });
@@ -45,13 +45,18 @@ function ChatInput() {
             setPrompt("");
             setReply("");
             setNewChat(false);
-            setPrompt("");
         }
     }
+    function clicked(event){
+        if(event.key == "Enter"){
+            getReply();
+        }
+    }
+
     return <>
         <div className="chat-input">
             <div className="input">
-                <input type="text" placeholder="Ask Anything" name="message" onChange={changeFunc} value={prompt} />
+                <input type="text" placeholder="Ask Anything" name="message" onChange={changeFunc} value={prompt} onKeyDown={clicked} />
                 <div className="send-btn">
                     <button onClick={getReply}><i className="fa-solid fa-paper-plane"></i></button>
                 </div>

@@ -9,8 +9,8 @@ router.get("/", async(req, res)=>{
 
 router.get("/:id", async(req, res)=>{
     let {id} = req.params;
-    let individualThread = await thread.find({_id: id});
-    res.send(individualThread);
+    let individualThread = await thread.find({threadId: id});
+    res.json(individualThread);
 });
 
 router.delete("/:id", async(req, res)=>{
