@@ -31,15 +31,15 @@ function ChatInput() {
         setStyles((prevVal) => {
             return { ...prevVal, display: "none" }
         });
-        if (replyAi.content) {
-            setReply(replyAi.content);
+        if (replyAi) {
+            setReply(replyAi);
             setPrevChats((prevVal) => {
                 return [...prevVal, {
                     role: "user",
                     content: prompt
                 }, {
                     role: "assistant",
-                    content: replyAi.content
+                    content: replyAi
                 }]
             });
             setPrompt("");

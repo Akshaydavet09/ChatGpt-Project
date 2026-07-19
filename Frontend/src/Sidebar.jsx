@@ -4,7 +4,7 @@ import "./Sidebar.css"
 import { useState } from "react";
 function Sidebar() {
     const [isOpen, setIsOpen] = useState(true);
-    const { data, setData } = useContext(MyContext);
+    const { data, setData, prevChats, setPrevChats, newChat, setNewChat} = useContext(MyContext);
     useEffect(() => {
         async function getData() {
             let response = await fetch("http://localhost:8080/thread");
@@ -24,10 +24,10 @@ function Sidebar() {
         );
     }
    async function historyClicked(idThread){ 
-    console.log(idThread);
+        setNewChat(false); 
         let response = await fetch(`http://localhost:8080/thread/${idThread}`);
         let data = await response.json();
-        console.log(data);
+        setPrevChats(data[0].messages);
     }
     return <div className="Sidebar">
         {/* butoon section  */}

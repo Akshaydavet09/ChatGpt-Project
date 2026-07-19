@@ -87,13 +87,13 @@ app.post("/chat", async (req, res) => {
     }
     try {
         let response = await aiResponse(message);
-        let userMessage = { content: message, response: "user" };
+        let userMessage = { content: message, role: "user" };
         let assistantMessage = { content: response, role: "assistant" };
         Thread.messages.push(userMessage);
         Thread.messages.push(assistantMessage);
         let me = await Thread.save();
         console.log(me);
-        res.json(Message);
+        res.json(response);
     } catch (error) {
         // throw new ExpressError(429, "Error From Gemini");
         console.log(error);
