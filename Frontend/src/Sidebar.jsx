@@ -29,9 +29,12 @@ function Sidebar() {
         let data = await response.json();
         setPrevChats(data[0].messages);
     }
+    function newChatClicked(){
+        setPrevChats([]);
+    }
     return <div className="Sidebar">
         {/* butoon section  */}
-        <button className="btn-sec">
+        <button className="btn-sec" onClick={newChatClicked}>
             <img className="logo" src="./src/assets/blacklogo.png" alt="" />
             <i className="fa-solid fa-pen-to-square icon"></i>
         </button>

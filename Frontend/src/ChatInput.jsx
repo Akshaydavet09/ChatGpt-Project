@@ -7,7 +7,7 @@ function ChatInput() {
     let [loading, setLoading] = useState(true);
     let [color, setColor] = useState("#ececec");
     let [styles, setStyles] = useState({ position: "absolute", right: "70px", display: "none" });
-    const { prompt, setPrompt, reply, setReply, prevChats, setPrevChats, newChat, setNewChat } = useContext(MyContext);
+    const { prompt, setPrompt, reply, setReply, prevChats, setPrevChats, newChat, setNewChat, newThreadId, setNewThreadId } = useContext(MyContext);
     function changeFunc(event) {
         event.preventDefault();
         setPrompt(event.target.value);
@@ -22,7 +22,7 @@ function ChatInput() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                threadId: 129,
+                threadId: newThreadId,
                 message: prompt
             })
         }
