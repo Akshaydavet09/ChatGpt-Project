@@ -4,7 +4,7 @@ import "./Sidebar.css"
 import { useState } from "react";
 function Sidebar() {
     const [isOpen, setIsOpen] = useState(true);
-    const { data, setData, prevChats, setPrevChats, newChat, setNewChat} = useContext(MyContext);
+    const { data, setData, prevChats, setPrevChats, newChat, setNewChat, newThreadId, setNewThreadId} = useContext(MyContext);
     useEffect(() => {
         async function getData() {
             let response = await fetch("http://localhost:8080/thread");
@@ -28,6 +28,7 @@ function Sidebar() {
         let response = await fetch(`http://localhost:8080/thread/${idThread}`);
         let data = await response.json();
         setPrevChats(data[0].messages);
+        setNewThreadId(idThread);
     }
     function newChatClicked(){
         setPrevChats([]);
