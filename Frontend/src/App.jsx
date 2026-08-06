@@ -4,10 +4,6 @@ import ChatWindow from "./ChatWindow.jsx"
 import { MyContext } from "./MyContext.jsx"
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
-
-
-
-
 function App() {
   const [prompt, setPrompt] = useState("");
   const [reply, setReply] = useState("");
@@ -15,7 +11,8 @@ function App() {
   const [prevChats, setPrevChats] = useState([]);
   const [data, setData] = useState([]);
   const [newThreadId, setNewThreadId] = useState(uuidv4());
-  const providerValues = { prompt, setPrompt, reply, setReply, prevChats, setPrevChats, newChat, setNewChat, data, setData};
+  const [latestReply, setLatestReply] = useState("");
+  const providerValues = { prompt, setPrompt, reply, setReply, prevChats, setPrevChats, newChat, setNewChat, data, setData, newThreadId, setNewThreadId, uuidv4, latestReply, setLatestReply};
   return <div className="App">
     <MyContext.Provider value={providerValues}>
       <Sidebar />

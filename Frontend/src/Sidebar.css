@@ -49,10 +49,11 @@
 .threads{
     box-sizing: border-box;
     color: #ececec;
-    padding: 1rem;
+    padding: 0.85rem;
     width: 100%;
-    border-radius: 0.5rem;
+    border-radius: 0.85rem;
     font-size: 0.8rem;
+    margin: 0.15rem;
 }
 .threads:hover{
     background-color: #212121;
@@ -68,13 +69,14 @@
 }
 .recent{
     color: #fff;
-    padding: 1rem;
+    padding: 0.85rem;
     padding-bottom: 0.65rem;
     margin: 0rem 0.75rem ;
     font-weight: 600;
     font-size: 0.85rem;
     display: flex;
     align-items: center;
+    margin-top: 1rem;
 }
 .recent:hover{
     cursor: pointer;

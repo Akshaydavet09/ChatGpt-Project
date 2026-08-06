@@ -4,7 +4,7 @@ import "./Sidebar.css"
 import { useState } from "react";
 function Sidebar() {
     const [isOpen, setIsOpen] = useState(true);
-    const { data, setData, prevChats, setPrevChats, newChat, setNewChat, newThreadId, setNewThreadId} = useContext(MyContext);
+    const { data, setData, prevChats, setPrevChats, newChat, setNewChat, newThreadId, setNewThreadId, uuidv4} = useContext(MyContext);
     useEffect(() => {
         async function getData() {
             let response = await fetch("http://localhost:8080/thread");
@@ -32,6 +32,8 @@ function Sidebar() {
     }
     function newChatClicked(){
         setPrevChats([]);
+        setNewThreadId(uuidv4);
+        setNewChat(true); 
     }
     return <div className="Sidebar">
         {/* butoon section  */}
@@ -47,7 +49,7 @@ function Sidebar() {
         {/* history sec   */}
         <div className="thread-sec">
             {data && data.map((obj) => {
-                return  <div className="threads" style={{display: isOpen ? "initial": "none"}} onClick={()=>{historyClicked(obj.threadId)}}>{obj.title}</div>
+                return  <div className="threads" style={{display: isOpen ? "initial": "none", backgroundColor: newThreadId == obj.threadId ? "#212121":""}} onClick={()=>{historyClicked(obj.threadId)}}>{obj.title}</div>
             })}
         </div>
 

@@ -43,7 +43,6 @@ function ChatInput() {
                 }]
             });
             setPrompt("");
-            setReply("");
             setNewChat(false);
         }
     }
