@@ -45,6 +45,8 @@
     justify-content: flex-start;
     align-items: center;
     margin: 0rem 0.75rem ;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .threads{
     box-sizing: border-box;

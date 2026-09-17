@@ -55,7 +55,7 @@ function ChatInput() {
     return <>
         <div className="chat-input">
             <div className="input">
-                <input type="text" placeholder="Ask Anything" name="message" onChange={changeFunc} value={prompt} onKeyDown={clicked} />
+                <input type="text" placeholder="Ask anything" name="message" onChange={changeFunc} value={prompt} onKeyDown={clicked} />
                 <div className="send-btn">
                     <button onClick={getReply}><i className="fa-solid fa-paper-plane"></i></button>
                 </div>

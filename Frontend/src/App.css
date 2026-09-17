@@ -1,13 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap') ;
 *{
     color: #ececec;
-    font-family: Roboto, 'Open Sans', 'Helvetica Neue', 'sans-serif';
+    font-family: Geist, 'Open Sans', 'Helvetica Neue', 'sans-serif';
 }
-body{
+
+body {
     margin: 0;
     padding: 0;
 }
-.App{
-    background-color: #212121;    
-    height:100vh;
-    display:flex;
+
+.App {
+    background-color: #212121;
+    height: 100vh;
+    display: flex;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 20px;
+}
+
+::-webkit-scrollbar-track {
+    margin-left: 0.25rem;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
 }
